@@ -63,6 +63,13 @@ resource "aws_iam_policy_attachment" "logs" {
   policy_arn = "${aws_iam_policy.logs.arn}"
 }
 
+resource "aws_cloudwatch_log_group" "logs" {
+  count = "${var.enable_cloudwatch_logs ? 1 : 0}"
+
+  name = "/aws/lambda/${var.function_name}"
+  tags = "${var.tags}"
+}
+
 # Attach an additional policy required for the dead letter config.
 
 data "aws_iam_policy_document" "dead_letter" {

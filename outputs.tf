@@ -17,3 +17,13 @@ output "role_name" {
   description = "The name of the IAM role created for the Lambda function"
   value       = "${aws_iam_role.lambda.name}"
 }
+
+output "log_group_arn" {
+  description = "The ARN of the cloudwatch log group (if enabled)"
+  value       = "${var.enable_cloudwatch_logs ? aws_cloudwatch_log_group.logs.arn : ""}"
+}
+
+output "log_group_name" {
+  description = "The name of the cloudwatch log group (if enabled)"
+  value       = "${var.enable_cloudwatch_logs ? aws_cloudwatch_log_group.logs.name : ""}"
+}
