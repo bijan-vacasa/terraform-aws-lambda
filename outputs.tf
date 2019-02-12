@@ -20,10 +20,10 @@ output "role_name" {
 
 output "log_group_arn" {
   description = "The ARN of the cloudwatch log group (if enabled)"
-  value       = "${var.enable_cloudwatch_logs ? aws_cloudwatch_log_group.logs.arn : ""}"
+  value       = "${element(concat(aws_cloudwatch_log_group.logs.*.arn, list("")), 0)}"
 }
 
 output "log_group_name" {
   description = "The name of the cloudwatch log group (if enabled)"
-  value       = "${var.enable_cloudwatch_logs ? aws_cloudwatch_log_group.logs.name : ""}"
+  value       = "${element(concat(aws_cloudwatch_log_group.logs.*.name, list("")), 0)}"
 }
