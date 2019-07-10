@@ -1,16 +1,16 @@
 variable "function_name" {
   description = "A unique name for your Lambda function (and related IAM resources)"
-  type        = "string"
+  type        = string
 }
 
 variable "handler" {
   description = "The function entrypoint in your code"
-  type        = "string"
+  type        = string
 }
 
 variable "memory_size" {
   description = "Amount of memory in MB your Lambda function can use at runtime"
-  type        = "string"
+  type        = string
   default     = 128
 }
 
@@ -22,88 +22,89 @@ variable "reserved_concurrent_executions" {
 
 variable "runtime" {
   description = "The runtime environment for the Lambda function"
-  type        = "string"
+  type        = string
 }
 
 variable "timeout" {
   description = "The amount of time your Lambda function had to run in seconds"
-  type        = "string"
+  type        = string
   default     = 10
 }
 
 variable "source_path" {
   description = "The source file or directory containing your Lambda source code"
-  type        = "string"
+  type        = string
 }
 
 variable "build_command" {
   description = "The command that creates the Lambda package zip file"
-  type        = "string"
+  type        = string
   default     = "python build.py '$filename' '$runtime' '$source'"
 }
 
 variable "build_paths" {
   description = "The files or directories used by the build command, to trigger new Lambda package builds whenever build scripts change"
-  type        = "list"
+  type        = list(string)
   default     = ["build.py"]
 }
 
 variable "description" {
   description = "Description of what your Lambda function does"
-  type        = "string"
+  type        = string
   default     = "Managed by Terraform"
 }
 
 variable "environment" {
   description = "Environment configuration for the Lambda function"
-  type        = "map"
+  type        = map(string)
   default     = {}
 }
 
 variable "dead_letter_config" {
   description = "Dead letter configuration for the Lambda function"
-  type        = "map"
+  type        = map(string)
   default     = {}
 }
 
 variable "attach_dead_letter_config" {
   description = "Set this to true if using the dead_letter_config variable"
-  type        = "string"
+  type        = string
   default     = false
 }
 
 variable "vpc_config" {
   description = "VPC configuration for the Lambda function"
-  type        = "map"
+  type        = map(string)
   default     = {}
 }
 
 variable "attach_vpc_config" {
   description = "Set this to true if using the vpc_config variable"
-  type        = "string"
+  type        = string
   default     = false
 }
 
 variable "tags" {
   description = "A mapping of tags"
-  type        = "map"
+  type        = map(string)
   default     = {}
 }
 
 variable "policy" {
   description = "An addional policy to attach to the Lambda function"
-  type        = "string"
+  type        = string
   default     = ""
 }
 
 variable "attach_policy" {
   description = "Set this to true if using the policy variable"
-  type        = "string"
+  type        = string
   default     = false
 }
 
 variable "enable_cloudwatch_logs" {
   description = "Set this to false to disable logging your Lambda output to CloudWatch Logs"
-  type        = "string"
+  type        = string
   default     = true
 }
+
