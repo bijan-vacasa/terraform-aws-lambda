@@ -30,6 +30,6 @@ output "role_name" {
 
 output "log_group_name" {
   description = "The name of the cloudwatch log group (if enabled)"
-  value       = aws_cloudwatch_log_group.logs.name
+  value       = aws_cloudwatch_log_group.logs.*.name
 }
 
